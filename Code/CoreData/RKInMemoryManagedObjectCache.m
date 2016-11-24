@@ -87,7 +87,11 @@ static dispatch_queue_t RKInMemoryManagedObjectCacheCallbackQueue(void)
 {
     NSParameterAssert(entity);
     NSParameterAssert(attributeValues);
-    NSParameterAssert(managedObjectContext);
+    //NSParameterAssert(managedObjectContext);
+    
+    if (!managedObjectContext) {
+        return [NSSet set];
+    }
     
     NSArray *attributes = [attributeValues allKeys];
     [self.entityCache beginAccessing];
